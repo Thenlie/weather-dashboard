@@ -17,3 +17,5 @@ A basic weather forcast dashboard created during the U of U coding bootcamp.
 * OpenWeather API
 
 ## Screenshot of the Application
+
+![Screenshot of weather dashboard application](https://github.com/Thenlie/weather-dashboard/blob/main/assets/images/mockup.PNG)

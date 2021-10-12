@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="./assets/css/styles.css" rel="stylesheet" />
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <h1 class="text-center">Weather Dashboard</h1>
+
+    <div class="container m-auto">
+        <div class="row">
+            <div class="col-3">
+                <form class="border border-success">
+                    <h2>Search for a City:</h2>
+                    <input type="text" id="city-search" placeholder="Enter a city Name">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+            <div class="col-9">
+                <div id="current-weather" class="border border-primary">
+                    <h2>Search results display here!</h2>
+                </div>
+                <div id="forecast" class=" border border-danger">
+                    <h2>Forecase will display here!</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
