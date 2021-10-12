@@ -100,22 +100,17 @@ let displayCurrentWeather = function(data) {
 }
 
 let displayForecast = function(data) {
-    // console.log(data.daily[1])
-    // console.log(data.daily[2])
-    // console.log(data.daily[3])
     for (i = 1; i < 6; i++) {
-        //debugger;
         let current = document.querySelector("#card" + i + "-title")
         current.textContent = moment().add(i, 'd').format("M/D/YYYY");
     }
 
     for (j = 0; j < 5; j++) {
-        //debugger;
         let currentData = data.daily[j]
-        console.log(currentData.weather)
+        let iconLink = "https://openweathermap.org/img/w/" + currentData.weather[0].icon + ".png"
+
         let icon = document.querySelector("#card" + j + "-icon");
-        icon.innerHTML = currentData.weather[0].icon
-            //icon.innerHTML = currentData.wind_speed
+        icon.src = iconLink
         let temp = document.querySelector("#card" + j + "-temp")
         temp.innerHTML = "Temp: " + currentData.temp.day
         let wind = document.querySelector("#card" + j + "-wind")
