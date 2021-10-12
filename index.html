@@ -16,10 +16,10 @@
     <div class="container m-auto">
         <div class="row">
             <div class="col-3">
-                <form class="border border-success">
+                <form id="search-form" class="border border-success">
                     <h2>Search for a City:</h2>
                     <input type="text" id="city-search" placeholder="Enter a city Name">
-                    <input type="submit" value="Search">
+                    <button type="submit" class="btn btn-primary">Search</button>
                 </form>
             </div>
             <div class="col-9">
@@ -28,6 +28,9 @@
                 </div>
                 <div id="forecast" class=" border border-danger">
                     <h2>Forecase will display here!</h2>
+                    <div>
+                        <img src="" id="weather-icon" />
+                    </div>
                 </div>
             </div>
         </div>
