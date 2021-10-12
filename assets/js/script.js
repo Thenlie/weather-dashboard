@@ -56,8 +56,6 @@ let getWeather = function(lat, lon) {
         })
         .then(function(data) {
             displayCurrentWeather(data);
-            let icon = data.current.weather[0].icon
-            document.getElementById("weather-icon").src = "https://openweathermap.org/img/w/" + icon + ".png";
         })
 }
 
