@@ -4,6 +4,12 @@ const searchInputEl = document.querySelector("#city-search");
 const currentHeadingEl = document.querySelector("#current-heading");
 const currentDataEl = document.querySelector("#current-data");
 
+const card1El = document.querySelector("#card1");
+const card2El = document.querySelector("#card2");
+const card3El = document.querySelector("#card3");
+const card4El = document.querySelector("#card4");
+const card5El = document.querySelector("#card5");
+
 const temp = (document.createElement("span"))
 const wind = (document.createElement("span"))
 const humid = (document.createElement("span"))
@@ -56,6 +62,7 @@ let getWeather = function(lat, lon) {
         })
         .then(function(data) {
             displayCurrentWeather(data);
+            displayForecast(data);
         })
 }
 
@@ -69,7 +76,6 @@ let displayCurrentWeather = function(data) {
             return res.json();
         })
         .then(function(data) {
-            console.log(data[0].name)
             currentHeadingEl.innerHTML = data[0].name + " (" + moment().format("M/D/YYYY") + ") ";
             currentHeadingEl.appendChild(document.createElement("img")).src = iconLink
         })
@@ -91,6 +97,32 @@ let displayCurrentWeather = function(data) {
     currentDataEl.appendChild(wind);
     currentDataEl.appendChild(humid);
     currentDataEl.appendChild(uvi);
+}
+
+let displayForecast = function(data) {
+    // console.log(data.daily[1])
+    // console.log(data.daily[2])
+    // console.log(data.daily[3])
+    for (i = 1; i < 6; i++) {
+        //debugger;
+        let current = document.querySelector("#card" + i + "-title")
+        current.textContent = moment().add(i, 'd').format("M/D/YYYY");
+    }
+
+    for (j = 0; j < 5; j++) {
+        //debugger;
+        let currentData = data.daily[j]
+        console.log(currentData.weather)
+        let icon = document.querySelector("#card" + j + "-icon");
+        icon.innerHTML = currentData.weather[0].icon
+            //icon.innerHTML = currentData.wind_speed
+        let temp = document.querySelector("#card" + j + "-temp")
+        temp.innerHTML = "Temp: " + currentData.temp.day
+        let wind = document.querySelector("#card" + j + "-wind")
+        wind.innerHTML = "Wind: " + currentData.wind_speed
+        let humid = document.querySelector("#card" + j + "-humid")
+        humid.innerHTML = "Humidity: " + currentData.humidity
+    }
 }
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
