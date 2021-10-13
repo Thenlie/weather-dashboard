@@ -20,9 +20,10 @@
 
     <main class="m-5 text-align-center">
         <div class="row m-0">
-            <section class="col-3 border border-success">
+            <section class="col-3">
                 <form id="search-form">
                     <h2>Search for a City:</h2>
+                    <div id="error-container" class="error-msg"></div>
                     <input type="text" id="city-search" placeholder="Enter a City Name" class="w-100 mb-2">
                     <button type="submit" class="w-100 mb-3 btn btn-secondary">Search</button>
                 </form>
@@ -39,7 +40,7 @@
                         <div id="uvi">UV Index: </div>
                     </div>
                 </div>
-                <div id="forecast" class=" border border-danger p-3">
+                <div id="forecast" class="p-3">
                     <h2 class="d-block">5-Day Forecast</h2>
                     <div class="row justify-content-around d-block d-xl-flex mr-0">
                         <div id="card1" class="card text-center col m-2 p-0">

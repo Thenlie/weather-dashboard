@@ -6,6 +6,7 @@ const currentHeadingEl = document.querySelector("#current-heading");
 const currentDataEl = document.querySelector("#current-data");
 const clearButtonEl = document.querySelector("#clear-btn");
 const searchContainerEl = document.querySelector("#search-container")
+const errorContainerEl = document.querySelector("#error-container");
 const temp = document.querySelector("#temp");
 const wind = document.querySelector("#wind");
 const humid = document.querySelector("#humid");
@@ -20,8 +21,9 @@ let formSubmitHandler = function(event) {
     //ensure something was entered, not necessarily valid
     if (cityName) {
         getCoordinates(cityName);
+        errorContainerEl.innerHTML = ""
     } else {
-        alert("Please enter a city name!")
+        errorContainerEl.innerHTML = "Please enter a city name!"
         return;
     }
 }
@@ -31,6 +33,7 @@ let getCoordinates = function(cityName) {
     let apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
     fetch(apiUrl)
         .then(function(res) {
+            errorContainerEl.innerHTML = ""
             return res.json();
         })
         .then(function(data) {
@@ -41,7 +44,7 @@ let getCoordinates = function(cityName) {
         })
         //if city name is not valid =>
         .catch(function(error) {
-            alert("Please enter a valid city name!");
+            errorContainerEl.innerHTML = "Please enter a valid city name!";
             return;
         })
 }
