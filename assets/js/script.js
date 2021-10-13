@@ -30,7 +30,7 @@ let formSubmitHandler = function(event) {
 
 //take cityName and turn it into lat and lon coordinates
 let getCoordinates = function(cityName) {
-    let apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
+    let apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
     fetch(apiUrl)
         .then(function(res) {
             errorContainerEl.innerHTML = ""
