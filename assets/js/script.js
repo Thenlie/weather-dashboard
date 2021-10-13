@@ -68,7 +68,7 @@ let getWeather = function(lat, lon) {
 
 //display the current weather in the top div
 let displayWeather = function(data) {
-    let apiUrl = "http://api.openweathermap.org/geo/1.0/reverse?lat=" + data.lat + "&lon=" + data.lon + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
+    let apiUrl = "https://api.openweathermap.org/geo/1.0/reverse?lat=" + data.lat + "&lon=" + data.lon + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
     let iconLink = "https://openweathermap.org/img/w/" + data.current.weather[0].icon + ".png"
     fetch(apiUrl)
         .then(function(res) {
