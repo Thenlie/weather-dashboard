@@ -1,23 +1,16 @@
+//global variables
 const weatherIconEl = document.querySelector("#weather-icon");
 const searchFormEl = document.querySelector("#search-form");
 const searchInputEl = document.querySelector("#city-search");
 const currentHeadingEl = document.querySelector("#current-heading");
 const currentDataEl = document.querySelector("#current-data");
-
-const card1El = document.querySelector("#card1");
-const card2El = document.querySelector("#card2");
-const card3El = document.querySelector("#card3");
-const card4El = document.querySelector("#card4");
-const card5El = document.querySelector("#card5");
-
-const temp = (document.createElement("span"))
-const wind = (document.createElement("span"))
-const humid = (document.createElement("span"))
-const uvi = (document.createElement("span"))
+const temp = document.querySelector("#temp")
+const wind = document.querySelector("#wind")
+const humid = document.querySelector("#humid")
+const uvi = document.querySelector("#uvi")
 
 //when a city is searched for, send that cityName to getCoordinates()
 let formSubmitHandler = function(event) {
-    //debugger;
     event.preventDefault();
     let cityName = searchInputEl.value.trim();
     searchInputEl.value = "";
@@ -69,8 +62,7 @@ let getWeather = function(lat, lon) {
 //display the current weather in the top div
 let displayCurrentWeather = function(data) {
     let apiUrl = "http://api.openweathermap.org/geo/1.0/reverse?lat=" + data.lat + "&lon=" + data.lon + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
-    let icon = data.current.weather[0].icon
-    let iconLink = "https://openweathermap.org/img/w/" + icon + ".png"
+    let iconLink = "https://openweathermap.org/img/w/" + data.current.weather[0].icon + ".png"
     fetch(apiUrl)
         .then(function(res) {
             return res.json();
@@ -80,43 +72,31 @@ let displayCurrentWeather = function(data) {
             currentHeadingEl.appendChild(document.createElement("img")).src = iconLink
         })
         //define weather data variables
-
-    temp.innerHTML = "Temp: " + data.current.temp + " \u00B0F"
-    temp.className = "d-block"
-
-    wind.innerHTML = "Wind: " + data.current.wind_speed + " MPH"
-    wind.className = "d-block"
-
-    humid.innerHTML = "Humidity: " + data.current.humidity + " %"
-    humid.className = "d-block"
-
-    uvi.innerHTML = "UV Index: " + data.current.uvi
-    uvi.className = "d-block"
-        //print variable to screen
-    currentDataEl.appendChild(temp);
-    currentDataEl.appendChild(wind);
-    currentDataEl.appendChild(humid);
-    currentDataEl.appendChild(uvi);
+    temp.textContent = "Temp: " + data.current.temp + " \u00B0F"
+    wind.textContent = "Wind: " + data.current.wind_speed + " MPH"
+    humid.textContent = "Humidity: " + data.current.humidity + " %"
+    uvi.textContent = "UV Index: " + data.current.uvi
 }
 
 let displayForecast = function(data) {
+    //add date
     for (i = 1; i < 6; i++) {
         let current = document.querySelector("#card" + i + "-title")
         current.textContent = moment().add(i, 'd').format("M/D/YYYY");
     }
 
+    //add weather data
     for (j = 0; j < 5; j++) {
         let currentData = data.daily[j]
         let iconLink = "https://openweathermap.org/img/w/" + currentData.weather[0].icon + ".png"
-
         let icon = document.querySelector("#card" + j + "-icon");
         icon.src = iconLink
         let temp = document.querySelector("#card" + j + "-temp")
-        temp.innerHTML = "Temp: " + currentData.temp.day
+        temp.innerHTML = "Temp: " + currentData.temp.day + " \u00B0F"
         let wind = document.querySelector("#card" + j + "-wind")
-        wind.innerHTML = "Wind: " + currentData.wind_speed
+        wind.innerHTML = "Wind: " + currentData.wind_speed + " MPH"
         let humid = document.querySelector("#card" + j + "-humid")
-        humid.innerHTML = "Humidity: " + currentData.humidity
+        humid.innerHTML = "Humidity: " + currentData.humidity + " %"
     }
 }
 

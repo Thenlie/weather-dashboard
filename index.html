@@ -11,21 +11,28 @@
 </head>
 
 <body>
-    <h1 class="text-center">Weather Dashboard</h1>
+    <header>
+        <h1 class="text-center">Weather Dashboard</h1>
+    </header>
 
-    <div class="container m-auto">
+    <main class="container m-auto">
         <div class="row">
-            <div class="col-3">
+            <section class="col-3">
                 <form id="search-form" class="border border-success">
                     <h2>Search for a City:</h2>
                     <input type="text" id="city-search" placeholder="Enter a City Name">
                     <button type="submit" class="btn btn-primary">Search</button>
                 </form>
-            </div>
-            <div class="col-9">
+            </section>
+            <section class="col-9">
                 <div id="current-weather" class="border border-primary">
                     <h2 id="current-heading">Current Weather</h2>
-                    <div id="current-data"> </div>
+                    <div id="current-data">
+                        <span class="d-block" id="temp">Temp: </span>
+                        <span class="d-block" id="wind">Wind: </span>
+                        <span class="d-block" id="humid">Humidity: </span>
+                        <span class="d-block" id="uvi">UV Index: </span>
+                    </div>
                 </div>
                 <div id="forecast" class=" border border-danger">
                     <h2 class="d-block">5-Day Forecast</h2>
@@ -77,9 +84,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </div>
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
