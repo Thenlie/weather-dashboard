@@ -2,12 +2,12 @@
 
 ## Links
 
-* GitHub Live Pages availabel at: https://thenlie.github.io/weather-dashboard/
+* GitHub Live Pages Available at: https://thenlie.github.io/weather-dashboard/
 * GitHub Repo Available at: https://github.com/Thenlie/workday-scheduler
 
 ## Description
 
-A basic weather forcast dashboard created during the U of U coding bootcamp. 
+A basic weather forecast dashboard created during the U of U coding bootcamp. 
 
 ## Languages and APIs Used
 
@@ -15,6 +15,7 @@ A basic weather forcast dashboard created during the U of U coding bootcamp.
 * HTML
 * CSS
 * OpenWeather API
+* Bootstrap
 
 ## Screenshot of the Application
 
