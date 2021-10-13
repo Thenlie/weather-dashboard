@@ -34,6 +34,19 @@ header h1 {
     border-radius: 10px;
 }
 
+.search-btn {
+    color: white;
+    background-color: rgb(53, 55, 73);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+}
+
+.search-btn:hover {
+    background-color: rgb(38, 39, 53);
+}
+
 @media (min-width: 1200px) {
     .col-9 .row {
         margin-right: -15px!important;

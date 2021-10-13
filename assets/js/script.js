@@ -4,10 +4,13 @@ const searchFormEl = document.querySelector("#search-form");
 const searchInputEl = document.querySelector("#city-search");
 const currentHeadingEl = document.querySelector("#current-heading");
 const currentDataEl = document.querySelector("#current-data");
-const temp = document.querySelector("#temp")
-const wind = document.querySelector("#wind")
-const humid = document.querySelector("#humid")
-const uvi = document.querySelector("#uvi")
+const clearButtonEl = document.querySelector("#clear-btn");
+const searchContainerEl = document.querySelector("#search-container")
+const temp = document.querySelector("#temp");
+const wind = document.querySelector("#wind");
+const humid = document.querySelector("#humid");
+const uvi = document.querySelector("#uvi");
+let search = JSON.parse(localStorage.getItem("search") || "[]");
 
 //when a city is searched for, send that cityName to getCoordinates()
 let formSubmitHandler = function(event) {
@@ -34,6 +37,7 @@ let getCoordinates = function(cityName) {
             let lat = (data[0].lat)
             let lon = (data[0].lon)
             getWeather(lat, lon)
+            saveSearch(cityName)
         })
         //if city name is not valid =>
         .catch(function(error) {
@@ -100,4 +104,37 @@ let displayForecast = function(data) {
     }
 }
 
+saveSearch = function(cityName) {
+    //debugger;
+    if (search.includes(cityName)) {
+        return;
+    } else {
+        search.push(cityName)
+        localStorage.setItem("search", JSON.stringify(search));
+        loadSearch();
+    }
+}
+
+loadSearch = function() {
+    if (search.length > 0) {
+        searchContainerEl.innerHTML = "";
+        for (i = 0; i < search.length; i++) {
+            let searchBtn = document.createElement("div")
+            searchBtn.className = "search-btn w-100 m-0 mb-2"
+            searchBtn.textContent = search[i]
+            searchContainerEl.appendChild(searchBtn);
+        }
+    } else {
+        searchContainerEl.innerHTML = "";
+    }
+}
+
+clearHistory = function() {
+    search = [];
+    localStorage.clear();
+    loadSearch();
+}
+
+loadSearch();
 searchFormEl.addEventListener("submit", formSubmitHandler);
+clearButtonEl.addEventListener("click", clearHistory)
