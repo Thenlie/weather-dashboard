@@ -18,4 +18,4 @@ A basic weather forcast dashboard created during the U of U coding bootcamp.
 
 ## Screenshot of the Application
 
-![Screenshot of weather dashboard application](https://github.com/Thenlie/weather-dashboard/blob/main/assets/images/screenshot.png)
+![Screenshot of weather dashboard application](https://github.com/Thenlie/weather-dashboard/blob/main/assets/images/screenshot.PNG)
