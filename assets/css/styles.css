@@ -7,6 +7,30 @@ header h1 {
     font-family: 'Major Mono Display', monospace;
 }
 
+.uvi-low {
+    background-color: rgb(22, 224, 130);
+    padding: 1px 5px;
+    border-radius: 5px;
+}
+
+.uvi-mid {
+    background-color: rgb(211, 236, 120);
+    padding: 1px 5px;
+    border-radius: 5px;
+}
+
+.uvi-high {
+    background-color: rgb(238, 66, 36);
+    padding: 1px 5px;
+    border-radius: 5px;
+}
+
+.uvi-vhigh {
+    background-color: rgb(196, 2, 2);
+    padding: 1px 5px;
+    border-radius: 5px;
+}
+
 .card {
     border: none;
     background-color: transparent;

@@ -37,7 +37,7 @@ let getCoordinates = function(cityName) {
             let lat = (data[0].lat)
             let lon = (data[0].lon)
             getWeather(lat, lon)
-            saveSearch(cityName)
+                //saveSearch(cityName)
         })
         //if city name is not valid =>
         .catch(function(error) {
@@ -58,13 +58,13 @@ let getWeather = function(lat, lon) {
             }
         })
         .then(function(data) {
-            displayCurrentWeather(data);
+            displayWeather(data);
             displayForecast(data);
         })
 }
 
 //display the current weather in the top div
-let displayCurrentWeather = function(data) {
+let displayWeather = function(data) {
     let apiUrl = "http://api.openweathermap.org/geo/1.0/reverse?lat=" + data.lat + "&lon=" + data.lon + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
     let iconLink = "https://openweathermap.org/img/w/" + data.current.weather[0].icon + ".png"
     fetch(apiUrl)
@@ -74,12 +74,21 @@ let displayCurrentWeather = function(data) {
         .then(function(data) {
             currentHeadingEl.innerHTML = data[0].name + " (" + moment().format("M/D/YYYY") + ") ";
             currentHeadingEl.appendChild(document.createElement("img")).src = iconLink
+            saveSearch(data[0].name)
         })
         //define weather data variables
     temp.textContent = "Temp: " + data.current.temp + " \u00B0F"
     wind.textContent = "Wind: " + data.current.wind_speed + " MPH"
     humid.textContent = "Humidity: " + data.current.humidity + " %"
-    uvi.textContent = "UV Index: " + data.current.uvi
+    if (data.current.uvi < 2) {
+        uvi.innerHTML = "UV Index: " + "<span class='uvi-low'>" + data.current.uvi + "</span>"
+    } else if (data.current.uvi < 5) {
+        uvi.innerHTML = "UV Index: " + "<span class='uvi-mid'>" + data.current.uvi + "</span>"
+    } else if (data.current.uvi < 7) {
+        uvi.innerHTML = "UV Index: " + "<span class='uvi-high'>" + data.current.uvi + "</span>"
+    } else {
+        uvi.innerHTML = "UV Index: " + "<span class='uvi-vhigh'>" + data.current.uvi + "</span>"
+    }
 }
 
 let displayForecast = function(data) {
@@ -104,8 +113,7 @@ let displayForecast = function(data) {
     }
 }
 
-saveSearch = function(cityName) {
-    //debugger;
+let saveSearch = function(cityName) {
     if (search.includes(cityName)) {
         return;
     } else {
@@ -115,7 +123,7 @@ saveSearch = function(cityName) {
     }
 }
 
-loadSearch = function() {
+let loadSearch = function() {
     if (search.length > 0) {
         searchContainerEl.innerHTML = "";
         for (i = 0; i < search.length; i++) {
@@ -129,12 +137,21 @@ loadSearch = function() {
     }
 }
 
-clearHistory = function() {
+let clearHistory = function() {
     search = [];
     localStorage.clear();
     loadSearch();
 }
 
+let reSearch = function(event) {
+    if (event.target.innerHTML.includes("<")) {
+        return;
+    } else {
+        getCoordinates(event.target.innerHTML)
+    }
+}
+
 loadSearch();
 searchFormEl.addEventListener("submit", formSubmitHandler);
-clearButtonEl.addEventListener("click", clearHistory)
+clearButtonEl.addEventListener("click", clearHistory);
+searchContainerEl.addEventListener("click", reSearch);
