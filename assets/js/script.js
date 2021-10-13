@@ -1,4 +1,5 @@
 //global variables
+var key = config.API_KEY;
 const weatherIconEl = document.querySelector("#weather-icon");
 const searchFormEl = document.querySelector("#search-form");
 const searchInputEl = document.querySelector("#city-search");
@@ -30,7 +31,7 @@ let formSubmitHandler = function(event) {
 
 //take cityName and turn it into lat and lon coordinates
 let getCoordinates = function(cityName) {
-    let apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
+    let apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=" + key
     fetch(apiUrl)
         .then(function(res) {
             errorContainerEl.innerHTML = ""
@@ -40,7 +41,6 @@ let getCoordinates = function(cityName) {
             let lat = (data[0].lat)
             let lon = (data[0].lon)
             getWeather(lat, lon)
-                //saveSearch(cityName)
         })
         //if city name is not valid =>
         .catch(function(error) {
@@ -51,7 +51,7 @@ let getCoordinates = function(cityName) {
 
 //take coordinates and send them to OpenWeather
 let getWeather = function(lat, lon) {
-    let apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=efc693abd192802e32ec5e23919e5afe"
+    let apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + key
     fetch(apiUrl)
         .then(function(res) {
             if (res.ok) {
@@ -68,7 +68,7 @@ let getWeather = function(lat, lon) {
 
 //display the current weather in the top div
 let displayWeather = function(data) {
-    let apiUrl = "https://api.openweathermap.org/geo/1.0/reverse?lat=" + data.lat + "&lon=" + data.lon + "&limit=1&appid=efc693abd192802e32ec5e23919e5afe"
+    let apiUrl = "https://api.openweathermap.org/geo/1.0/reverse?lat=" + data.lat + "&lon=" + data.lon + "&limit=1&appid=" + key
     let iconLink = "https://openweathermap.org/img/w/" + data.current.weather[0].icon + ".png"
     fetch(apiUrl)
         .then(function(res) {
@@ -94,6 +94,7 @@ let displayWeather = function(data) {
     }
 }
 
+//display the 5 day forecast
 let displayForecast = function(data) {
     //add date
     for (i = 1; i < 6; i++) {
@@ -116,6 +117,7 @@ let displayForecast = function(data) {
     }
 }
 
+//save search history
 let saveSearch = function(cityName) {
     if (search.includes(cityName)) {
         return;
@@ -126,6 +128,7 @@ let saveSearch = function(cityName) {
     }
 }
 
+//load search history when page loads
 let loadSearch = function() {
     if (search.length > 0) {
         searchContainerEl.innerHTML = "";
@@ -146,6 +149,7 @@ let clearHistory = function() {
     loadSearch();
 }
 
+//search for location that is clicked on in history
 let reSearch = function(event) {
     if (event.target.innerHTML.includes("<")) {
         return;
