@@ -5,27 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link href="./assets/css/styles.css" rel="stylesheet" />
     <title>Weather Dashboard</title>
 </head>
 
 <body>
-    <header>
-        <h1 class="text-center">Weather Dashboard</h1>
+    <header class="p-4 mb-4 text-align-center">
+        <h1 class="text-center">weAther dAshboArd</h1>
     </header>
 
-    <main class="container m-auto">
-        <div class="row">
-            <section class="col-3">
-                <form id="search-form" class="border border-success">
+    <main class="m-5 text-align-center">
+        <div class="row m-0">
+            <section class="col-3 border border-success">
+                <form id="search-form">
                     <h2>Search for a City:</h2>
-                    <input type="text" id="city-search" placeholder="Enter a City Name">
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <input type="text" id="city-search" placeholder="Enter a City Name" class="w-100 m-1">
+                    <button type="submit" class="w-100 m-1 btn btn-secondary">Search</button>
                 </form>
             </section>
             <section class="col-9">
-                <div id="current-weather" class="border border-primary">
+                <div id="current-weather" class="border border-primary p-3 mb-4">
                     <h2 id="current-heading">Current Weather</h2>
                     <div id="current-data">
                         <span class="d-block" id="temp">Temp: </span>
@@ -34,49 +37,49 @@
                         <span class="d-block" id="uvi">UV Index: </span>
                     </div>
                 </div>
-                <div id="forecast" class=" border border-danger">
+                <div id="forecast" class=" border border-danger p-3">
                     <h2 class="d-block">5-Day Forecast</h2>
                     <div class="row justify-content-around">
-                        <div id="card1" class="card">
+                        <div id="card1" class="card text-center col m-1 p-0">
                             <div class="card-body">
-                                <div id="card1-title"></div>
-                                <img src="" id="card0-icon"></img>
+                                <div id="card1-title" class="card-title"></div>
+                                <img src="" id="card0-icon" class="card-icon"></img>
                                 <div id="card0-temp"></div>
                                 <div id="card0-wind"></div>
                                 <div id="card0-humid"></div>
                             </div>
                         </div>
-                        <div id="card2" class="card">
+                        <div id="card2" class="card text-center col m-1 p-0">
                             <div class="card-body">
-                                <div id="card2-title"></div>
-                                <img src="" id="card1-icon"></img>
+                                <div id="card2-title" class="card-title"></div>
+                                <img src="" id="card1-icon" class="card-icon"></img>
                                 <div id="card1-temp"></div>
                                 <div id="card1-wind"></div>
                                 <div id="card1-humid"></div>
                             </div>
                         </div>
-                        <div id="card3" class="card">
+                        <div id="card3" class="card text-center col m-1 p-0">
                             <div class="card-body">
-                                <div id="card3-title"></div>
-                                <img src="" id="card2-icon"></img>
+                                <div id="card3-title" class="card-title"></div>
+                                <img src="" id="card2-icon" class="card-icon"></img>
                                 <div id="card2-temp"></div>
                                 <div id="card2-wind"></div>
                                 <div id="card2-humid"></div>
                             </div>
                         </div>
-                        <div id="card4" class="card">
+                        <div id="card4" class="card text-center col m-1 p-0">
                             <div class="card-body">
-                                <div id="card4-title"></div>
-                                <img src="" id="card3-icon"></img>
+                                <div id="card4-title" class="card-title"></div>
+                                <img src="" id="card3-icon" class="card-icon"></img>
                                 <div id="card3-temp"></div>
                                 <div id="card3-wind"></div>
                                 <div id="card3-humid"></div>
                             </div>
                         </div>
-                        <div id="card5" class="card">
+                        <div id="card5" class="card text-center col m-1 p-0">
                             <div class="card-body">
-                                <div id="card5-title"></div>
-                                <img src="" id="card4-icon"></img>
+                                <div id="card5-title" class="card-title"></div>
+                                <img src="" id="card4-icon" class="card-icon"></img>
                                 <div id="card4-temp"></div>
                                 <div id="card4-wind"></div>
                                 <div id="card4-humid"></div>
