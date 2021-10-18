@@ -3,7 +3,7 @@
 ## Links
 
 * GitHub Live Pages Available at: https://thenlie.github.io/weather-dashboard/
-* GitHub Repo Available at: https://github.com/Thenlie/workday-scheduler
+* GitHub Repo Available at: https://github.com/Thenlie/weather-dashboard
 
 ## Description
 
