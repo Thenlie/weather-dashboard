@@ -47,6 +47,7 @@ header h1 {
     border: 2px solid black;
     border-radius: 20px;
     padding: 7px;
+    box-shadow: 5px 5px 3px grey;
 }
 
 .card-title {
@@ -62,7 +63,7 @@ header h1 {
 #current-weather {
     border: 3px solid rgb(31, 30, 30);
     border-radius: 10px;
-    box-shadow: 2px 2px grey;
+    box-shadow: 5px 5px 3px grey;
 }
 
 .search-btn {
