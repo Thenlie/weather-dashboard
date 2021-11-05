@@ -65,6 +65,14 @@ header h1 {
     border-radius: 10px;
     box-shadow: 5px 5px 3px grey;
 }
+#current-icon {
+    text-align: center;
+}
+
+#current-icon img{
+    width: 100px;
+    height: 100px;
+}
 
 .search-btn {
     color: white;

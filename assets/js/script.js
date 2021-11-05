@@ -5,6 +5,7 @@ const searchFormEl = document.querySelector("#search-form");
 const searchInputEl = document.querySelector("#city-search");
 const currentHeadingEl = document.querySelector("#current-heading");
 const currentDataEl = document.querySelector("#current-data");
+const currentIconEl = document.querySelector("#current-icon");
 const clearButtonEl = document.querySelector("#clear-btn");
 const searchContainerEl = document.querySelector("#search-container")
 const errorContainerEl = document.querySelector("#error-container");
@@ -57,7 +58,7 @@ let getWeather = function(lat, lon) {
             if (res.ok) {
                 return res.json();
             } else {
-                alert("Please enter a valid city coordiante!")
+                alert("Please enter a valid city coordinate!")
             }
         })
         .then(function(data) {
@@ -76,8 +77,8 @@ let displayWeather = function(data) {
         })
         .then(function(data) {
             currentHeadingEl.innerHTML = data[0].name + " (" + moment().format("M/D/YYYY") + ") ";
-            currentHeadingEl.appendChild(document.createElement("img")).src = iconLink
-            saveSearch(data[0].name)
+            currentIconEl.innerHTML = "<img src=" + iconLink + ">";
+            saveSearch(data[0].name);
         })
         //define weather data variables
     temp.textContent = "Temp: " + data.current.temp + " \u00B0F"
