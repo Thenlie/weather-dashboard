@@ -84,6 +84,7 @@ let displayWeather = function(data) {
     temp.textContent = "Temp: " + data.current.temp + " \u00B0F"
     wind.textContent = "Wind: " + data.current.wind_speed + " MPH"
     humid.textContent = "Humidity: " + data.current.humidity + " %"
+
     if (data.current.uvi < 2) {
         uvi.innerHTML = "UV Index: " + "<span class='uvi-low'>" + data.current.uvi + "</span>"
     } else if (data.current.uvi < 5) {
