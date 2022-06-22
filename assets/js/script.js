@@ -135,8 +135,8 @@ let loadSearch = function() {
     if (search.length > 0) {
         searchContainerEl.innerHTML = "";
         for (i = 0; i < search.length; i++) {
-            let searchBtn = document.createElement("div")
-            searchBtn.className = "search-btn w-100 m-0 mb-2"
+            let searchBtn = document.createElement("button")
+            searchBtn.className = "search-btn w-100 m-0 mb-2 pe-auto"
             searchBtn.textContent = search[i]
             searchContainerEl.appendChild(searchBtn);
         }
