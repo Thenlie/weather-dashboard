@@ -100,8 +100,10 @@ let displayWeather = function(data) {
 let displayForecast = function(data) {
     //add date
     for (i = 1; i < 6; i++) {
-        let current = document.querySelector("#card" + i + "-title")
+        let current = document.querySelector("#card" + i + "-title");
         current.textContent = moment().add(i, 'd').format("M/D/YYYY");
+        let forecast = document.querySelector("#card" + i);
+        forecast.classList.remove("d-none");
     }
 
     //add weather data
